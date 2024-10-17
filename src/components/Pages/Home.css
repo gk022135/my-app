@@ -1,0 +1,108 @@
+.home{
+    margin-top: 0;
+    padding: 0;
+    background-color: #2f3542;
+    color: #fff;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+}
+
+.animated-text{
+    font-size: 34px;
+    font-weight: 600;
+    min-width: 280px;
+    color: aqua;
+}
+
+.animated-text span{
+    position: relative;
+}
+
+.animated-text span::before{
+    content: "Qr-Based";
+    color: #ff7f50;
+    animation: words 20s infinite;
+}
+
+.animated-text span::after{
+    content: "";
+    position: absolute;
+    width: calc(100% + 8px);
+    height: 100%;
+    background-color: #2f3542;
+    border-left: 2px solid #757c72;
+    right: -8px;
+    animation: cursor .8s infinite, typing 20s steps(14) infinite;
+}
+
+
+
+
+@keyframes cursor {
+    to{
+        border-left: 2px solid #ff7f5000;
+    }
+}
+
+@keyframes words {
+    0%,20%{
+        content: "Qr-Based";
+    }
+    21%,40%{
+        content: "Entry-Exit";
+    }
+    41%,60%{
+        content: "System";
+    }
+    61%,80%{
+        content: "Qr-Based Entry-Exit System";
+    }
+    81%,100%{
+        content: " ......";
+    }
+} 
+
+@keyframes typing {
+    10%,15%,30%,35%,50%,55%,70%,75%,90%,95%{
+        width: 0;
+    }
+    5%,20%,25%,40%,45%,60%,65%,80%,85%{
+        width: calc(100% + 8px);
+    }
+}
+
+
+
+
+.para{
+    color: rgb(224, 213, 213);
+    font-size: 17px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px;
+    padding: 5%;
+    border: solid rgb(11, 236, 225);
+    border-radius: 25px;
+    overflow: hidden;
+}
+@media only screen and (max-width: 768px) {
+    .para {
+        font-size: 18px; /* Adjust font size */
+        padding: 4%; /* Adjust padding */
+        margin: 15px; /* Adjust margin */
+    }
+}
+
+/* Media Query for devices with a max width of 480px (mobile phones) */
+@media only screen and (max-width: 480px) {
+    .para {
+        font-size: 16px; /* Smaller font size for smaller screens */
+        padding: 3%; /* Reduced padding for mobile */
+        margin: 10px; /* Reduced margin for mobile */
+    }
+}
+
