@@ -3,7 +3,7 @@
     padding: 0;
     background-color: #2f3542;
     color: #fff;
-    height: 80vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -106,3 +106,11 @@
     }
 }
 
+
+
+.home2{
+    background-color: #2f3542;
+    width: 100%;
+    height: 70vh
+    ;
+}

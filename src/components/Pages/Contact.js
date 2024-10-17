@@ -1,5 +1,6 @@
 import React from "react";
 import './Contact.css'
+import propic from './sri ganesh.jpeg'
 
 export const Contact = () => {
   return (
@@ -7,7 +8,7 @@ export const Contact = () => {
     <div className="cbody">
     <div class="user-card">
         <div class="user-image">
-            <img src="./sri ganesh.jpeg" alt="User Profile"/>
+            <img src={propic} alt="User Profile"/>
         </div>
         <div class="user-info">
             <h2 class="user-name">John Doe</h2>
