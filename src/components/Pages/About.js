@@ -2,7 +2,7 @@ import React from "react";
 import './Contact.css'
 import propic from './sri ganesh.jpeg'
 
-export const Contact = () => {
+export const About = () => {
   return (
   <>
     <div className="cbody">
