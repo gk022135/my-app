@@ -5,6 +5,7 @@ import { Home } from "./components/Pages/Home";
 import { AdminLogin } from "./components/Pages/AdminLogin";
 import { Login } from "./components/Pages/Login";
 import { About } from "./components/Pages/About";
+import {SignUp} from "./components/Pages/SignUp";
 
 function App() {
   return (
@@ -18,7 +19,10 @@ function App() {
             <Route path="/adminlogin" element={<AdminLogin />} />
             <Route path="/login" element={<Login />} />
             <Route path="/about" element={<About />} />
+            <Route path="/singup" element={<Login />} />
+
           </Routes>
+          
         </div>
       </Router>
   </>
