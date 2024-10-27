@@ -1,5 +1,6 @@
 import React from "react";
 import './Home.css';
+import QRCodeScanner from "./QRCodeScanner";
 
 export const Home = () => {
   return (
@@ -18,6 +19,7 @@ export const Home = () => {
 
               </div>
           </div>
+          <QRCodeScanner />
     </div>
   );
 };

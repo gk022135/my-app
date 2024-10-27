@@ -56,3 +56,9 @@ form input{
     color: white;
     font-size: 15px;
 }
+.error{
+    margin: 20px;
+    border: 20px;
+    position: fixed;
+    color: rgb(230, 27, 20);
+}

@@ -1,65 +1,74 @@
 import React, { useState } from 'react';
 import './Login.css';
 import SignUpButton from './SignUpButton';
+import { useNavigate } from 'react-router-dom';
+import { handleError, handleSuccess } from '../../utils';
+import { ToastContainer } from 'react-toastify';
 
-export const Login = () => {
-  // State to hold form data
-  const [formData, setFormData] = useState({
-    username: '',
-    password: ''
-  });
+export function Login() {
 
-  // State to show a success or error message
-  const [message, setMessage] = useState('');
+  const [loginInfo, setLoginInfo] = useState({
+      email: '',
+      password: ''
+  })
 
-  // Handle input field changes
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value
-    }));
-  };
+      const { name, value } = e.target;
+      console.log(name, value);
+      const copyLoginInfo = { ...loginInfo };
+      copyLoginInfo[name] = value;
+      setLoginInfo(copyLoginInfo);
+  }
 
-  // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
-
-    try {
-      const response = await fetch('http://localhost:5000/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData) // Send form data as JSON
-      });
-
-      const data = await response.json(); // Parse response data
-
-      if (response.ok) {
-        // If login is successful, show a success message
-        setMessage(`Login successful! Welcome, ${data.username}`);
-      } else {
-        // If login fails, show an error message
-        setMessage('Login failed: ' + data.message);
+  const handleLogin = async (e) => {
+      e.preventDefault();
+      const { email, password } = loginInfo;
+      if (!email || !password) {
+          return handleError('email and password are required')
       }
-    } catch (error) {
-      console.error('Error during form submission:', error);
-      setMessage('An error occurred. Please try again.');
-    }
-  };
+      try {
+          const url = `http://localhost:8000/auth/login`;
+          const response = await fetch(url, {
+              method: "POST",
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(loginInfo)
+          });
+          const result = await response.json();
+          const { success, message, jwtToken, name, error } = result;
+          if (success) {
+              handleSuccess(message);
+              localStorage.setItem('token', jwtToken);
+              localStorage.setItem('loggedInUser', name);
+              setTimeout(() => {
+                  navigate('/home')
+              }, 1000)
+          } else if (error) {
+              const details = error?.details[0].message;
+              handleError(details);
+          } else if (!success) {
+              handleError(message);
+          }
+          console.log(result);
+      } catch (err) {
+          handleError(err);
+      }
+  }
 
   return (
     <div className='login'>
       <h2 className='header'>Login Form</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogin}>
         <div className='input'>
           <label>Username: </label>
           <input className='inp'
-            type="text"
-            name="username"
+            type='email'
+            name='email'
             placeholder='   22bcs037@smvdu.ac.in'
-            value={formData.username}
+            value={loginInfo.email}
             onChange={handleChange}
             required
           />
@@ -68,9 +77,9 @@ export const Login = () => {
           <label>Password: </label>
           <input className='inp'
             type="password"
-            name="password"
-            placeholder='password'
-            value={formData.password}
+            name='password'
+            placeholder='    password'
+            value={loginInfo.password}
             onChange={handleChange}
             required
           />
@@ -79,9 +88,11 @@ export const Login = () => {
         <p className='new'>Create new account</p>
         <SignUpButton />
       </form>
+      <div className='error'>
+      <ToastContainer />
+      </div>
 
-      {/* Display message */}
-      {message && <p>{message}</p>}
+      
     </div>
   );
 };
