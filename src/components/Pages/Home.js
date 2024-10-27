@@ -14,7 +14,7 @@ export const Home = () => {
               </div>
 
               <div className="home2">
-                <p>fgjhpokpghkojp</p>
+               
 
               </div>
           </div>

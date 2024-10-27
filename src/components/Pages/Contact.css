@@ -1,3 +1,15 @@
+.cards {
+    display: flex;
+    flex-direction: row; /* Default to row */
+}
+
+@media (max-width: 768px) {
+    .cards {
+        flex-direction: column; /* Change to column for smaller screens */
+    }
+}
+
+
 .cbody{
     background-color: #1f5156;
     width: 100%;

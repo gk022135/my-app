@@ -26,7 +26,16 @@
 }
 .input{
     margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+form input{
+    width: auto;
+    height: 40px;
+    margin:15px;
+}
+
 .button{
     margin: 20px;
     background-color: aqua;
@@ -42,4 +51,8 @@
     background-color: rgb(223, 236, 236);
     border-radius: 5px;
     height: 30px;
+}
+.new{
+    color: white;
+    font-size: 15px;
 }

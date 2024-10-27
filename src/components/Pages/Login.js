@@ -64,7 +64,7 @@ export const Login = () => {
             required
           />
         </div>
-        <div>
+        <div className='input'>
           <label>Password: </label>
           <input className='inp'
             type="password"
@@ -76,7 +76,7 @@ export const Login = () => {
           />
         </div>
         <button className="button"type="submit">Login</button>
-        <button className="button" type ="submit" >SignUp</button>
+        <p className='new'>Create new account</p>
         <SignUpButton />
       </form>
 

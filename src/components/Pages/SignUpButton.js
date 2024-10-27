@@ -9,7 +9,8 @@ export const SignUpButton = () => {
   };
 
   return (
-    <button onClick={handleSignUpClick}>
+    <button onClick={handleSignUpClick}
+    style={{ margin:"10px",borderRadius: "20px",border: "5px 2px solid aliceblue", padding: "10px 20px", backgroundColor: "alice blue", color: "black", cursor: "pointer" }}>
       Sign Up
     </button>
   );
