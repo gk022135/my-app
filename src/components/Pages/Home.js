@@ -3,8 +3,13 @@ import './Home.css';
 import QRCodeScanner from "./QRCodeScanner";
 
 export const Home = () => {
+
+  const onNewScanResult = (decodedText, decodedResult) => {
+    // handle decoded results here
+};
   return (
     <div className="home">
+      <QRCodeScanner />
       <h1>Home</h1>
       
           <div class="animated-text">
@@ -15,11 +20,12 @@ export const Home = () => {
               </div>
 
               <div className="home2">
-               
-
+                   
               </div>
           </div>
-          <QRCodeScanner />
+          <div>
+          </div>
+            
     </div>
   );
 };

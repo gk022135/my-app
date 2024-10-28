@@ -1,37 +1,85 @@
 // src/QRCodeScanner.js
 import React, { useState } from 'react';
-import QrScanner from 'react-qr-scanner';
-import {Html5QrcodeScanner} from "html5-qrcode"
+import { Html5Qrcode } from 'html5-qrcode';
 
 const QRCodeScanner = () => {
-  const [scanResult, setScanResult] = useState('No result');
+  const [scannedData, setScannedData] = useState(null);
+  const [error, setError] = useState(null);
+  const [isScanning, setIsScanning] = useState(false);  // To track whether scanning is active
 
-  const handleScan = (data) => {
-    if (data) {
-      setScanResult(data.text);
+  let html5QrCode;
+
+  const startScanning = () => {
+    setIsScanning(true);  // Indicate that scanning is in progress
+    html5QrCode = new Html5Qrcode("reader");
+
+    const qrCodeSuccessCallback = (decodedText) => {
+      // Store scanned data and stop scanning
+      setScannedData(decodedText);
+      stopScanning();  // Automatically stop scanning after a successful scan
+    };
+
+    const qrCodeErrorCallback = (errorMessage) => {
+      // Handle scanning errors
+      setError(errorMessage);
+      console.error("QR Code scanning error:", errorMessage);
+    };
+
+    // Start the QR code scanner
+    html5QrCode.start(
+      { facingMode: "environment" }, // Rear camera by default
+      {
+        fps: 10, // Frames per second
+        qrbox: 250, // Scanning box size
+      },
+      qrCodeSuccessCallback,
+      qrCodeErrorCallback
+    ).catch((err) => {
+      console.error("Failed to start QR Code scanner:", err);
+      setError("Failed to start the scanner. Try again.");
+      setIsScanning(false);
+    });
+  };
+
+  const stopScanning = () => {
+    if (html5QrCode) {
+      html5QrCode.stop().then(() => {
+        console.log("QR Code scanning stopped.");
+        setIsScanning(false); // Scanning is no longer active
+      }).catch((err) => {
+        console.error("Failed to stop scanning:", err);
+      });
     }
-  };
-
-  const handleError = (err) => {
-    console.error(err);
-  };
-
-  const previewStyle = {
-    height: 240,
-    width: 320,
   };
 
   return (
     <div style={{ textAlign: 'center', paddingTop: '50px' }}>
       <h1>QR Code Scanner</h1>
-      <QrScanner
-        delay={300}
-        style={previewStyle}
-        onError={handleError}
-        onScan={handleScan}
-        facingMode="environment"  // This sets the back camera on mobile devices
-      />
-      <p>Scanned Result: {scanResult}</p>
+
+      {/* Scanning area */}
+      <div id="reader" style={{ width: "500px", height: "500px", marginBottom: "20px" }}></div>
+
+      {/* Start Scanning Button */}
+      <button 
+        onClick={startScanning} 
+        disabled={isScanning}
+        style={{
+          padding: "10px 20px", 
+          backgroundColor: isScanning ? "gray" : "#007bff", 
+          color: "white", 
+          border: "none", 
+          borderRadius: "5px",
+          cursor: isScanning ? "not-allowed" : "pointer"
+        }}
+      >
+        {isScanning ? "Scanning..." : "Start Scanning"}
+      </button>
+
+      {/* Display the scanned data or error */}
+      <div style={{ marginTop: '20px' }}>
+        {scannedData && <p>Scanned Data: {scannedData}</p>}
+        {error && <p>Error: {error}</p>}
+      </div>
     </div>
   );
 };

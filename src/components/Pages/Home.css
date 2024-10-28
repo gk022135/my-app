@@ -114,3 +114,10 @@
     height: 70vh
     ;
 }
+.qrscanner{
+    margin: 20px;
+    width: 500px;
+    height: 500px;
+    border: 5px solid blanchedalmond;
+    background-color: white;
+}
