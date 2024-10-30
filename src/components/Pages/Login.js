@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css';
 import SignUpButton from './SignUpButton';
-import { useNavigate } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import { handleError, handleSuccess } from '../../utils';
 import { ToastContainer } from 'react-toastify';
 
@@ -29,7 +29,7 @@ export function Login() {
           return handleError('email and password are required')
       }
       try {
-          const url = `http://localhost:8000/auth/login`;
+          const url = `http://localhost:8080/auth/login`;
           const response = await fetch(url, {
               method: "POST",
               headers: {

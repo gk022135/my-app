@@ -1,14 +1,49 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
+import {useNavigate} from 'react-router-dom';
 import './Home.css';
 import QRCodeScanner from "./QRCodeScanner";
+//import useNavigate  from "react-router-dom";
+import { handleSuccess ,handleError} from "../../utils";
+import { ToastContainer } from 'react-toastify';
+
 
 export const Home = () => {
+  const [loggedInUser,setLoggedInUser] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    setLoggedInUser(localStorage.getItem("loggedInUser"))
+
+  },[])
+
+  const handleLogout =(e)=>{
+    localStorage.removeItem('token');
+    localStorage.removeItem('loggedInUser');
+    handleSuccess('user logged out successed');
+    setTimeout(()=>{
+      navigate('/login');
+    },1000)
+  }
+
+
+
+
+
+
+
+
 
   const onNewScanResult = (decodedText, decodedResult) => {
     // handle decoded results here
 };
   return (
     <div className="home">
+      <div>
+            <h1>Welcome {loggedInUser}</h1>
+            <button onClick={handleLogout}>Logout</button>
+            
+            <ToastContainer />
+        </div>
       <QRCodeScanner />
       <h1>Home</h1>
       
@@ -23,9 +58,9 @@ export const Home = () => {
                    
               </div>
           </div>
-          <div>
-          </div>
-            
+          <ToastContainer />
     </div>
   );
 };
+
+export default Home;

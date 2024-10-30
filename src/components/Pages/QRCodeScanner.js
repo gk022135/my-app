@@ -8,15 +8,27 @@ const QRCodeScanner = () => {
   const [isScanning, setIsScanning] = useState(false);  // To track whether scanning is active
 
   let html5QrCode;
+  let dataToSend;
 
   const startScanning = () => {
     setIsScanning(true);  // Indicate that scanning is in progress
     html5QrCode = new Html5Qrcode("reader");
 
+
+
+    //decodedText is by default provided by Html5QrCode
     const qrCodeSuccessCallback = (decodedText) => {
       // Store scanned data and stop scanning
       setScannedData(decodedText);
+
       stopScanning();  // Automatically stop scanning after a successful scan
+
+      // trying to create object or string to send qr data to backend
+      const dataObject = { qrCodeData: decodedText };
+      //const xyz = scannedData;
+      //console.log(" hi it is scanned",xyz);
+      
+      console.log(dataObject);
     };
 
     const qrCodeErrorCallback = (errorMessage) => {
