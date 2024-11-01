@@ -32,11 +32,12 @@ function App() {
         <div className="pages">
    
           <Routes>
-            <Route path='/' element={<PrivateRoute><Home /></PrivateRoute>} />
+            <Route path='/' element={<PrivateRoute element={<Home />} />} />
             <Route path="/adminlogin" element={<AdminLogin />} />
             <Route path="/login" element={<Login />} />
             <Route path="/about" element={<About />} />
             <Route path="/signup" element={<SignUp />} />
+            {/* <Route path="/" element={<Home />} /> */}
 
           </Routes>
           

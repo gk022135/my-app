@@ -9,16 +9,20 @@ import { ToastContainer } from 'react-toastify';
 
 export const Home = () => {
   const [loggedInUser,setLoggedInUser] = useState('');
+  const [hostel,setHostel] = useState('');
   const navigate = useNavigate();
 
   useEffect(()=>{
-    setLoggedInUser(localStorage.getItem("loggedInUser"))
+    setLoggedInUser(localStorage.getItem("loggedInUser"));
+    setHostel(localStorage.getItem("hostelname"));
+    console.log("it workng fine till here");
 
   },[])
 
   const handleLogout =(e)=>{
     localStorage.removeItem('token');
     localStorage.removeItem('loggedInUser');
+    localStorage.removeItem('hostelname');
     handleSuccess('user logged out successed');
     setTimeout(()=>{
       navigate('/login');
@@ -40,6 +44,7 @@ export const Home = () => {
     <div className="home">
       <div>
             <h1>Welcome {loggedInUser}</h1>
+            <h2>Hostel:{hostel}</h2>
             <button onClick={handleLogout}>Logout</button>
             
             <ToastContainer />

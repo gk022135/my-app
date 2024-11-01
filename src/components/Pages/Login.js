@@ -38,11 +38,13 @@ export function Login() {
               body: JSON.stringify(loginInfo)
           });
           const result = await response.json();
-          const { success, message, jwtToken, name, error } = result;
+          const { success, message, jwtToken, name,hostel, error } = result;
           if (success) {
+            //succes per data frontend ke liye aa raha hai aur local storage me save ho raha hai
               handleSuccess(message);
               localStorage.setItem('token', jwtToken);
               localStorage.setItem('loggedInUser', name);
+              localStorage.setItem('hostelname', hostel);
               setTimeout(() => {
                   navigate('/home')
               }, 1000)

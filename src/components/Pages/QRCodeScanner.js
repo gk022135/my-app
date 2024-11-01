@@ -4,6 +4,7 @@ import { Html5Qrcode } from 'html5-qrcode';
 
 const QRCodeScanner = () => {
   const [scannedData, setScannedData] = useState(null);
+  const [gPassStatus ,setGPassStatus] = useState(null);
   const [error, setError] = useState(null);
   const [isScanning, setIsScanning] = useState(false);  // To track whether scanning is active
 
@@ -22,6 +23,8 @@ const QRCodeScanner = () => {
       setScannedData(decodedText);
 
       stopScanning();  // Automatically stop scanning after a successful scan
+
+
 
       // trying to create object or string to send qr data to backend
       const dataObject = { qrCodeData: decodedText };
@@ -62,6 +65,26 @@ const QRCodeScanner = () => {
         console.error("Failed to stop scanning:", err);
       });
     }
+    const SendDataBackend = async (dataObject,req,res)=>{
+      const url = "http://localhost:8080/auth/gatepass";
+      fetch(url,{
+        method: 'POST',
+        headers :{
+          'Content-Type': 'application | json'
+        }, body: JSON.stringify(dataObject)
+      })
+      const result = await res.json();
+      const {message, success} = result;
+      console.log(result);
+    }
+
+
+
+
+
+
+
+
   };
 
   return (

@@ -8,11 +8,11 @@ function RefrshHandler({ setIsAuthenticated }) {
     useEffect(() => {
         if (localStorage.getItem('token')) {
             setIsAuthenticated(true);
-            if (location.pathname === '/' ||
+            if (location.pathname === '/home' ||
                 location.pathname === '/login' ||
                 location.pathname === '/signup'
             ) {
-                navigate('/home', { replace: false });
+                navigate('/', { replace: false });
             }
         }
     }, [location, navigate, setIsAuthenticated])
