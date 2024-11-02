@@ -10,6 +10,7 @@ import { Login } from "./components/Pages/Login";
 import { About } from "./components/Pages/About";
 import {SignUp} from "./components/Pages/SignUp";
 import RefrshHandler from './RefrshHandler';
+import { AdminDashBoard } from "./components/Pages/AdminDashBoard";
 
 
 
@@ -38,6 +39,8 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/signup" element={<SignUp />} />
             {/* <Route path="/" element={<Home />} /> */}
+
+            <Route path = "/admindashboard" element ={<AdminDashBoard />}/>
 
           </Routes>
           
