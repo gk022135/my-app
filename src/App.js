@@ -11,6 +11,7 @@ import { About } from "./components/Pages/About";
 import {SignUp} from "./components/Pages/SignUp";
 import RefrshHandler from './RefrshHandler';
 import { AdminDashBoard } from "./components/Pages/AdminDashBoard";
+import AdminSign  from "./components/Pages/AdminSign";
 
 
 
@@ -21,13 +22,11 @@ function App() {
     return isAuthenticated ? element : <Navigate to="/login" />
   }
 
-
-
   return (
     <>
         
       <Router>
-           <RefrshHandler setIsAuthenticated=                         {setIsAuthenticated} />
+           <RefrshHandler setIsAuthenticated={setIsAuthenticated} />
 
         <NavBar />
         <div className="pages">
@@ -38,8 +37,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/about" element={<About />} />
             <Route path="/signup" element={<SignUp />} />
-            {/* <Route path="/" element={<Home />} /> */}
 
+            <Route path = "/adminsignup" element = {<AdminSign/>}/>
             <Route path = "/admindashboard" element ={<AdminDashBoard />}/>
 
           </Routes>

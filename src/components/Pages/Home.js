@@ -30,15 +30,7 @@ export const Home = () => {
   }
 
 
-
-
-
-
-
-
-
   const onNewScanResult = (decodedText, decodedResult) => {
-    // handle decoded results here
 };
   return (
     <div className="home">
