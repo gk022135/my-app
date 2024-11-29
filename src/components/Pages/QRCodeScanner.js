@@ -16,9 +16,6 @@ const QRCodeScanner = () => {
     html5QrCode = new Html5Qrcode("reader");
 
 
-
-    //decodedText is by default provided by Html5QrCode
-
     const qrCodeSuccessCallback = (decodedText) => {
       setScannedData(decodedText);
 
@@ -59,6 +56,8 @@ const QRCodeScanner = () => {
         console.error("Failed to stop scanning:", err);
       });
     }
+
+
     const SendDataBackend = async (dataObject,req,res)=>{
       const url = "http://localhost:8080/auth/gatepass";
       const response = await fetch(url,{

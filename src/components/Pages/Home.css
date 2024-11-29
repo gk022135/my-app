@@ -121,3 +121,55 @@
     border: 5px solid blanchedalmond;
     background-color: white;
 }
+.profile{
+    height: auto;
+    width: 50rem;
+    padding: 20px;
+    margin: 10px;
+    border: solid rgb(9, 170, 108);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+}
+.profile h1 {
+    border-bottom: solid rgb(46, 135, 212);
+    color: #1bd5db;
+    border-radius: 10px;
+    font-size: 30px;
+}
+.profile h2 {
+    border-bottom: solid rgb(46, 135, 212);
+    color: #13f1e6;
+    border-radius: 10px;
+    font-size: 30px;
+}
+.profile button{
+    margin: 20px;
+    width: 80px;
+    border: solid #05aaaa;
+    border-radius: 5px;
+    background-color: rgb(214, 71, 15);
+}
+@media only screen and (max-width: 480px) {
+    .profile{
+        flex-direction: column;
+        height: auto;
+        width: auto;
+    }
+}
+
+.student{
+    background-color: rgb(26, 16, 4);
+    border: solid rgb(36, 53, 68);
+    margin: 50px;
+    border-radius: 20px;
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-rows: repeat(2, 1fr); 
+    gap: 20px; 
+    width:40rem;
+    height: 30rem;
+    justify-content: center;
+    align-items: center;
+}

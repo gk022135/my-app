@@ -34,12 +34,20 @@ export const Home = () => {
 };
   return (
     <div className="home">
-      <div>
+      <div className="profile">
             <h1>Welcome {loggedInUser}</h1>
             <h2>Hostel:{hostel}</h2>
             <button onClick={handleLogout}>Logout</button>
             
             <ToastContainer />
+        </div>
+        <div className="student">
+
+          <div className="std_child"><p>Qr for Exit</p></div>
+          <div className="std_child"><p>Qr for Entry</p></div>
+          <div className="std_child"><p>Your Past History</p></div>
+          <div className="std_child">Aditionl data </div>
+
         </div>
       <QRCodeScanner />
       <h1>Home</h1>
