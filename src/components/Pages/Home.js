@@ -49,7 +49,8 @@ export const Home = () => {
           <div className="std_child">Aditionl data </div>
 
         </div>
-      <QRCodeScanner />
+            
+              <QRCodeScanner />
       <h1>Home</h1>
       
           <div class="animated-text">
