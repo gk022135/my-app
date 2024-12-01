@@ -1,0 +1,51 @@
+.tablee {
+    font-size: 20px; /* Fixed typo: '20x' to '20px' */
+    color: black;
+    width: 100%; /* Table takes the full width */
+    border-collapse: collapse; /* Remove double borders */
+    margin-top: 20px; /* Add spacing from the top */
+}
+
+.tablee th, .tablee td {
+    border: 1px solid #ddd; /* Add borders to cells */
+    padding: 8px; /* Add padding for better spacing */
+    text-align: left; /* Align text to the left */
+}
+
+.tablee th {
+    background-color: #f2f2f2; /* Light gray background for header */
+    font-weight: bold; /* Make header text bold */
+    text-align: center; /* Center-align header text */
+}
+
+.tablee tr:nth-child(even) {
+    background-color: #f9f9f9; /* Add alternating row colors */
+}
+.tablee tr{
+    height: 10px;
+}
+
+.tablee tr:hover {
+    background-color: #4a72f5; /* Highlight row on hover */
+}
+
+.tablee td {
+    vertical-align: middle; /* Align text vertically */
+}
+
+.tablee button{
+    margin: 20px;
+    height: 40px;
+    width:100px;
+    border: #4a72f5;
+    border-radius: 10px;
+    background-color: rgb(7, 58, 18);
+    color: beige;
+    text-decoration: solid;
+    font-weight: 20px;
+}
+.tablee button:hover{
+    background-color: aqua;
+    color: black;
+    box-shadow: 5px 5px 10px 5px rgba(177, 65, 65, 0.3); 
+}

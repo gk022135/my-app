@@ -12,6 +12,7 @@ import {SignUp} from "./components/Pages/SignUp";
 import RefrshHandler from './RefrshHandler';
 import { AdminDashBoard } from "./components/Pages/AdminDashBoard";
 import AdminSign  from "./components/Pages/AdminSign";
+import StudentDetails from "./components/Pages/StudentDetails";
 
 
 
@@ -40,6 +41,8 @@ function App() {
 
             <Route path = "/adminsignup" element = {<AdminSign/>}/>
             <Route path = "/admindashboard" element ={<AdminDashBoard />}/>
+
+            <Route path="/studentdetails" element={<StudentDetails />} />
 
           </Routes>
           

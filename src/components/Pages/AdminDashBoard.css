@@ -33,6 +33,7 @@
     align-items: center;
 }
 .qr{
+    /* height: auto; */
     margin: 5px;
     padding: 20px;
     border: 5px solid rgb(30, 234, 241);

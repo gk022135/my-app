@@ -3,6 +3,7 @@ import './Contact.css'
 import propic from './sri ganesh.jpeg'
 
 export const About = () => {
+
   return (
   <>
   <div className="cards">

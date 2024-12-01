@@ -45,6 +45,7 @@ export function Login() {
               localStorage.setItem('token', jwtToken);
               localStorage.setItem('loggedInUser', name);
               localStorage.setItem('hostelname', hostel);
+              localStorage.setItem('useremail', email);
               setTimeout(() => {
                   navigate('/home')
               }, 1000)
