@@ -2,13 +2,39 @@ import React, { useEffect } from "react";
 //import { Html5Qrcode } from "html5-qrcode";
 import { useState } from "react";
 import QRCode from 'qrcode';
+import { handleError, handleSuccess } from '../../utils.js';
 
-import  './AdminDashBoard.css';
+
+import './AdminDashBoard.css';
 
 
 export const AdminDashBoard = () => {
 
   const [AdminName, setAdminName] = useState('');
+  const [QrData, setQrData] = useState({
+    QrEntry: '',
+    QrExit: '',
+  });
+  const [UserId, setUserId] = useState({
+    email: ''
+  });
+
+
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    console.log(name, value);
+    const emData = { ...UserId }
+    const copyQrdata = { ...QrData };
+    copyQrdata[name] = value;
+    emData[name] = value;
+    setUserId(emData);
+    setQrData(copyQrdata);
+
+  }
+  console.log(UserId)
+
+
 
   useEffect(() => {
     setAdminName(localStorage.getItem("AdminName"));
@@ -21,7 +47,6 @@ export const AdminDashBoard = () => {
   const x = text;
   //console.log(x);
 
-  // Function to generate QR code
   const generateQrCode = async () => {
     try {
       const url = await QRCode.toDataURL(text);
@@ -33,34 +58,117 @@ export const AdminDashBoard = () => {
 
 
 
-  // sending data to backend in Admin API
 
-  const sendDataToBackend = async (text) => {
+
+
+
+
+
+  const lele = {
+    QrEntry: QrData.QrEntry,
+    QrExit: QrData.QrExit,
+    email: localStorage.getItem("AdminName")
+
+  }
+  const handleUpdate = async (e) => {
+    console.log(QrData);
+    console.log("fine till here")
+    e.preventDefault();
+
+    const { QrEntry, QrExit } = QrData;
+
+    if (!QrEntry || !QrExit) {
+      return handleError('name, email and password are required')
+    }
     try {
-      const response = await fetch('http://localhost:8080/getpass', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ qrCodeData: text }),
-      });
+      const url = `http://localhost:8080/auth/gatepass`;
 
-      if (response.ok) {
-        const responseData = await response.json();
-        console.log("Data saved successfully:", responseData);
-      } else {
-        console.error("Failed to send data:", response.statusText);
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(lele)
+      });
+      const result = await response.json();
+      const { success, message, error } = result;
+      if (success) {
+        handleSuccess(message);
+      } else if (error) {
+        const details = error?.details[0].message;
+        handleError(details);
+      } else if (!success) {
+        handleError(message);
       }
-    } catch (error) {
-      console.error("Error sending data:", error);
+      console.log(result);
+    } catch (err) {
+      handleError(err);
+    }
+  }
+
+
+
+
+  const handleDetails = async (e) => {
+
+
+
+  }
+
+
+
+  const eml = {
+    Admemail: localStorage.getItem("AdminName"),
+    Useremail: UserId.email2,
+  }
+  console.log("delete krna bsdke", eml)
+
+  const handleDelete = async (e) => {
+
+    e.preventDefault();
+    console.log(eml)
+
+    const { email2 } = UserId;
+
+    if (!email2) {
+      return handleError('email daal betichod')
+    }
+    try {
+      const url = `http://localhost:8080/auth/crudoperation`;
+      console.log("response will come")
+
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(eml)
+      });
+     console.log("response will come")
+
+      const result = await response.json();
+      console.log(result);
+      const { success, message, error } = result;
+      if (success) {
+        handleSuccess(message);
+      } 
+      else if (error) {
+        const details = error?.details[0].message;
+        handleError(details);
+      } 
+      else if (!success) {
+        handleError(message);
+      }
+      console.log(result);
+    } 
+    catch (err) {
+      handleError(err);
     }
 
-  };
-  useEffect(() => {
-    sendDataToBackend();
 
-  }, [sendDataToBackend])
 
+  }
+  console.log(UserId.email1);
   return (
     <div className="container">
 
@@ -70,68 +178,92 @@ export const AdminDashBoard = () => {
       <div className="adm">
 
         <div className="qr">
-          <div className="oper">
-            <p>Qr Makes Exit</p>
-            <input></input>
-          </div>
-          <button>Update</button>
-          
-        </div>
+          <p>Update Qr</p>
+          <div className="update">
 
+            <label>entry Qr</label>
+            <input type="text"
+              onChange={handleChange}
+              name="QrEntry"
+              value={QrData.QrEntry}
+
+            ></input>
+
+            <label id="name">exit Qr</label>
+            <input type="text" id="name"
+              onChange={handleChange}
+              name="QrExit"
+              value={QrData.QrExit}
+            ></input>
+            <button onClick={handleUpdate}>Update</button>
+          </div>
+
+        </div>
         <div className="qr">
-          <div className="oper">
-            <p>Qr Makes Entry</p>
-            <input></input>
+          <p>Operation</p>
+          <div className="update">
+
+            <label>Enter User Id</label>
+            <input type="text"
+              name="email1"
+              value={UserId.email1}
+            ></input>
+            <button
+              onClick={handleDetails}>
+              User Details</button>
+
+            <label id="name">User Id</label>
+            <input type="text" id="name"
+              onChange={handleChange}
+              name="email2"
+              value={UserId.email2}
+            ></input>
+            <button
+              onClick={handleDelete}
+            >Delete User</button>
           </div>
-          <button>Update</button>
+
         </div>
 
-        <div>
-        <div className="oper">
-            <p>Show User Details</p>
-            <input></input>
-          </div>
-          <button>Update</button>
-        </div>
+
 
         <div>
-        <div className="oper">
-          <p>Delete User</p>
-            <input>
-            
-            </input>
-          </div>
-          <button>Update</button>
+
         </div>
       </div>
 
-      <h1>QR Code Generator</h1>
+      <h2>QR Code Generator</h2>
       <input
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Enter text to generate QR code"
-        // style={{ padding: '10px', width: '300px', marginBottom: '20px' }}
+        style={{
+          padding: '10px', width: '300px', marginTop: '10px',
+          borderRadius: '25px'
+        }}
       />
       <br />
       <button
         onClick={generateQrCode}
         style={{
           padding: '10px 20px',
-          backgroundColor: '#007bff',
+          backgroundColor: '#080808',
           color: 'white',
           border: 'none',
           borderRadius: '5px',
           cursor: 'pointer',
+          marginBottom: '20px'
         }}
       >
         Generate QR Code
       </button>
 
       {qrCodeUrl && (
-        <div>
+        <div className="imgg">
+
           <h3>Generated QR Code:</h3>
-          <img src={qrCodeUrl} alt="Generated QR Code"/>
+          <img src={qrCodeUrl} alt="Generated QR Code" />
         </div>
       )}
     </div>

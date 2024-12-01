@@ -81,6 +81,9 @@ const QRCodeScanner = () => {
       const result = await response.json();
       const { message, success } = result;
 
+      
+
+
       console.log(result);
       console.log(message);
       return { success, message };
@@ -100,7 +103,7 @@ const QRCodeScanner = () => {
 
   return (
     <div>
-      <div id="reader" style={{ width: "500px", height: "500px", marginBottom: "20px" }}></div>
+      <div id="reader" style={{ width: "300px", height: "300px", marginBottom: "20px" }}></div>
 
       <div>
         <button

@@ -77,7 +77,7 @@ export function SignUp() {
                         />
                     </div >
                     <div className='form'>
-                        <label htmlFor='email'>Email</label>
+                        <label jnjfdhtmlFor='email'>Email</label>
                         <input
                             onChange={handleChange}
                             required

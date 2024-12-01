@@ -42,25 +42,28 @@ export const Home = () => {
 
         <ToastContainer />
       </div>
+      <div className="qr">
+        <h2>Make Scan here </h2>
+        <QRCodeScanner />
+
+      </div>
       <div className="student">
 
-        <div className="std_child"><p>Qr for Exit</p></div>
-        <div className="std_child"><p>Qr for Entry</p></div>
-        <div className="std_child"><p>Your Past History</p></div>
+        
         <div className="std_child">
+          <h3>Click Below to Check<br></br>
+          Your Past Entries
+          </h3>
           <Link to="/studentdetails">
             <button>
               Show Details
             </button>
           </Link>
         </div>
-
+       
       </div>
-      <div className="qr">
-        <h2>Make Scan here </h2>
-
-      </div>
-      <QRCodeScanner />
+     
+      
 
 
       <h1>Home</h1>

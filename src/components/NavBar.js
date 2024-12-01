@@ -12,7 +12,7 @@ function NavBar() {
       <nav className="navbar">
         <div className="nav-container">
           <NavLink exact to="/" className="nav-logo">
-            <span>QR Based In/Out</span>
+            <span>QR Entry and Exit</span>
             {/* <i className="fas fa-code"></i> */}
             <span className="icon">
               {/* <CodeIcon /> */}
