@@ -82,7 +82,7 @@ export const AdminDashBoard = () => {
       return handleError('name, email and password are required')
     }
     try {
-      const url = `http://localhost:8080/auth/gatepass`;
+      const url = `https://qr-bakend.onrender.com`;
 
       const response = await fetch(url, {
         method: "POST",
@@ -135,7 +135,7 @@ export const AdminDashBoard = () => {
       return handleError('email daal betichod')
     }
     try {
-      const url = `http://localhost:8080/auth/crudoperation`;
+      const url = `https://qr-bakend.onrender.com`;
       console.log("response will come")
 
       const response = await fetch(url, {
