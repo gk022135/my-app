@@ -28,7 +28,7 @@ export function AdminLogin() {
           return handleError('email and password are required')
       }
       try {
-          const url = `http://localhost:8080/auth/adminlogin`;
+          const url = `https://qr-bakend.onrender.com`;
           const response = await fetch(url, {
               method: "POST",
               headers: {
@@ -36,7 +36,7 @@ export function AdminLogin() {
               },
               body: JSON.stringify(loginInfo)
           });
-          const result = await response.json();
+          const resulthttp://localhost:8080/auth/adminlogin = await response.json();
           const { success, message, jwtToken, name, error } = result;
           if (success) {
 
