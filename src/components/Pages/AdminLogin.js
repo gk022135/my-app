@@ -36,7 +36,7 @@ export function AdminLogin() {
               },
               body: JSON.stringify(loginInfo)
           });
-          const resulthttp://localhost:8080/auth/adminlogin = await response.json();
+          const result = await response.json();
           const { success, message, jwtToken, name, error } = result;
           if (success) {
 
