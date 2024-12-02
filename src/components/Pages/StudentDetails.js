@@ -9,7 +9,7 @@ const StudentDetails = () => {
         e.preventDefault();
 
         setLoading(true);
-        const url = "http://localhost:8080/auth/gatepass";
+        const url = "https://qr-bakend.onrender.com";
         const requestData = {
             email: localStorage.getItem("useremail"),
         };
