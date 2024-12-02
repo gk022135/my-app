@@ -14,7 +14,8 @@ import { AdminDashBoard } from "./components/Pages/AdminDashBoard";
 import AdminSign  from "./components/Pages/AdminSign";
 import StudentDetails from "./components/Pages/StudentDetails";
 import MainPg from "./components/Pages/mainpage";
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
             <Route path="/mainpage" element={<MainPg />} />
 
           </Routes>
+          <ToastContainer />
           
         </div>
       </Router>
