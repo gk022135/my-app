@@ -88,8 +88,10 @@ export function Login() {
           />
         </div>
         <button className="button"type="submit">Login</button>
-        <p className='new'>Create new account</p>
+        <p className='new'>Create new account
         <SignUpButton />
+        </p>
+        
       </form>
       <div className='error'>
       <ToastContainer />

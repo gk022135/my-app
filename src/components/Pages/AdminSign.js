@@ -63,7 +63,7 @@ export function AdminSign() {
         <div className='bdy'>
 
             <div className='container'>
-                <h1>Signup</h1>
+                <h1>Signup Admin</h1>
                 <form onSubmit={handleSignup}>
                     <div className='form'>
                         <label htmlFor='name'>Name</label>

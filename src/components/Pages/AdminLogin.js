@@ -89,7 +89,7 @@ export function AdminLogin() {
           />
         </div>
         <button className="button"type="submit">Login</button>
-        <span className='span'>Don't have an account ?
+        <span className='spanAdm'>Don't have an account ?
             <Link to="/adminsignup">signup</Link>
          </span>
       </form>

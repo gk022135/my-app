@@ -103,16 +103,19 @@ const QRCodeScanner = () => {
 
   return (
     <div>
-      <div id="reader" style={{ width: "300px", height: "300px", marginBottom: "20px" }}></div>
+      <div id="reader" style={{ width: "300px", height: "200px",
+        margin: "20px",
+        border:"solid yellow",
+        
+        }}></div>
 
-      <div>
+      <div className='qrscan'>
         <button
           onClick={handleClick}
           style={{
             padding: "10px 20px",
             backgroundColor: isScanning ? "#FF0000" : "#007bff",
             color: "white",
-            border: "none",
             borderRadius: "5px",
             cursor: "pointer"
           }}
@@ -121,7 +124,10 @@ const QRCodeScanner = () => {
         </button>
 
         <div style={{ marginTop: '20px' }}>
-          {scannedData && <p>Scanned Data: {scannedData}</p>}
+          {scannedData && <p>Scanned Message: SuccessFully Scanned<br></br>
+          Check Your Log For Entry
+          </p>}
+
           {error && <p>Error: {error}</p>}
         </div>
       </div>

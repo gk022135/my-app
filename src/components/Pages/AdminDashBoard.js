@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import QRCode from 'qrcode';
 import { handleError, handleSuccess } from '../../utils.js';
+import Footer from './Footer.js'
 
 
 import './AdminDashBoard.css';
@@ -266,6 +267,7 @@ export const AdminDashBoard = () => {
           <img src={qrCodeUrl} alt="Generated QR Code" />
         </div>
       )}
+      <Footer/>
     </div>
   );
 };
