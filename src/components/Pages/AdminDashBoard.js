@@ -7,6 +7,7 @@ import Footer from './Footer.js'
 
 
 import './AdminDashBoard.css';
+import { ToastContainer } from "react-toastify";
 
 
 export const AdminDashBoard = () => {
@@ -95,10 +96,8 @@ export const AdminDashBoard = () => {
       const { success, message, error } = result;
       if (success) {
         handleSuccess(message);
-      } else if (error) {
-        const details = error?.details[0].message;
-        handleError(details);
-      } else if (!success) {
+      } 
+      else if (!success) {
         handleError(message);
       }
       console.log(result);
@@ -262,12 +261,23 @@ export const AdminDashBoard = () => {
 
       {qrCodeUrl && (
         <div className="imgg">
-
-          <h3>Generated QR Code:</h3>
-          <img src={qrCodeUrl} alt="Generated QR Code" />
-        </div>
+        <h3>Generated QR Code:</h3>
+        <img id="qrCodeImage" src={qrCodeUrl} alt="Generated QR Code" />
+        <button
+          onClick={() => {
+            const link = document.createElement("a");
+            link.href = qrCodeUrl; // Use the source of the QR code image
+            link.download = "QRCode.png"; // Set the downloaded file name
+            link.click();
+          }}
+        >
+          Download QR Code
+        </button>
+      </div>
+      
       )}
       <Footer/>
+      <ToastContainer/>
     </div>
   );
 };
