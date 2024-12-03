@@ -32,7 +32,7 @@ export function SignUp() {
             return handleError('name, email and password are required')
         }
         try {// api fetching
-            const url = `http://localhost:8080/auth/signup`;
+            const url = `https://qr-bakend.onrender.com`;
 
             const response = await fetch(url, {
                 method: "POST",
