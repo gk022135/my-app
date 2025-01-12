@@ -13,7 +13,6 @@ import RefrshHandler from './RefrshHandler';
 import { AdminDashBoard } from "./components/Pages/AdminDashBoard";
 import AdminSign  from "./components/Pages/AdminSign";
 import StudentDetails from "./components/Pages/StudentDetails";
-import MainPg from "./components/Pages/mainpage";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -45,8 +44,6 @@ function App() {
             <Route path = "/admindashboard" element ={<AdminDashBoard />}/>
 
             <Route path="/studentdetails" element={<StudentDetails />} />
-            <Route path="/mainpage" element={<MainPg />} />
-
           </Routes>
           <ToastContainer />
           
