@@ -67,8 +67,9 @@ const QRCodeScanner = () => {
   };
 
   const SendDataBackend = async (PassObj) => {
+    const API_URL = process.env.REACT_APP_API_URL;
     try {
-      const url = "https://qr-bakend.onrender.com";
+      const url = `${API_URL}gatepass`;
       const response = await fetch(url, {
         method: 'POST',
         headers: {
