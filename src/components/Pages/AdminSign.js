@@ -32,7 +32,7 @@ export function AdminSign() {
             return handleError('name, email and password are required')
         }
         try {
-            const url = `https://qr-bakend.onrender.com`;
+            const url = `http://localhost:8080/qr-code-system/adminsignup`;
 
             const response = await fetch(url, {
                 method: "POST",

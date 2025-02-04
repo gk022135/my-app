@@ -15,6 +15,17 @@ function RefrshHandler({ setIsAuthenticated }) {
                 navigate('/', { replace: false });
             }
         }
+        // if(localStorage.getItem('AdminName')){
+        //     setIsAuthenticated(true);
+        //     if (location.pathname === '/home' ||
+        //         location.pathname === '/login' ||
+        //         location.pathname == '/adminlogin'||
+        //         location.pathname == '/adminsignup'
+        //     ) {
+        //         navigate('/admindashboard', { replace: false });
+        //     }
+
+        // }
     }, [location, navigate, setIsAuthenticated])
 
     return (

@@ -29,7 +29,7 @@ export function Login() {
           return handleError('email and password are required')
       }
       try {
-          const url = `https://qr-bakend.onrender.com`;
+          const url = `http://localhost:8080/qr-code-system/login`;
           const response = await fetch(url, {
               method: "POST",
               headers: {
