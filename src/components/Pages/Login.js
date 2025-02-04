@@ -24,12 +24,13 @@ export function Login() {
 
   const handleLogin = async (e) => {
       e.preventDefault();
+      const API_URL = process.env.REACT_APP_API_URL;
       const { email, password } = loginInfo;
       if (!email || !password) {
           return handleError('email and password are required')
       }
       try {
-          const url = `http://localhost:8080/qr-code-system/login`;
+          const url = `${API_URL}login`;
           const response = await fetch(url, {
               method: "POST",
               headers: {

@@ -27,12 +27,13 @@ export function AdminSign() {
 
     const handleSignup = async (e) => {
         e.preventDefault(); // prevent from page refresh
+        const API_URL = process.env.REACT_APP_API_URL;
         const { name, email, password } = signupInfo;
         if (!name || !email || !password) {
             return handleError('name, email and password are required')
         }
         try {
-            const url = `http://localhost:8080/qr-code-system/adminsignup`;
+            const url = `${API_URL}adminsignup`;
 
             const response = await fetch(url, {
                 method: "POST",

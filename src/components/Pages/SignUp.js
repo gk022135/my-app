@@ -27,12 +27,14 @@ export function SignUp() {
 
     const handleSignup = async (e) => {
         e.preventDefault(); // prevent from page refresh
+        const API_URL = process.env.REACT_APP_API_URL;
+
         const { name, email, password } = signupInfo;
         if (!name || !email || !password) {
             return handleError('name, email and password are required')
         }
         try {// api fetching
-            const url = `http://localhost:8080/qr-code-system/signup`;
+            const url = `${API_URL}signup`;
 
             const response = await fetch(url, {
                 method: "POST",

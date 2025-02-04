@@ -73,6 +73,7 @@ export const AdminDashBoard = () => {
 
   }
   const handleUpdate = async (e) => {
+    const API_URL = process.env.REACT_APP_API_URL;
     console.log(QrData);
     console.log("fine till here")
     e.preventDefault();
@@ -83,7 +84,7 @@ export const AdminDashBoard = () => {
       return handleError('name, email and password are required')
     }
     try {
-      const url = `http://localhost:8080/qr-code-system/gatepass`;
+      const url = `${API_URL}gatepass`;
 
       const response = await fetch(url, {
         method: "POST",

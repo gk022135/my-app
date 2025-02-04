@@ -5,6 +5,8 @@ import { Link,useNavigate } from 'react-router-dom';
 import { handleSuccess, handleError } from '../../utils';import { ToastContainer } from 'react-toastify';
 
 export function AdminLogin() {
+  const API_URL = process.env.REACT_APP_API_URL;
+  console.log(API_URL)
 
   const [loginInfo, setLoginInfo] = useState({
       email: '',
@@ -28,7 +30,7 @@ export function AdminLogin() {
           return handleError('email and password are required')
       }
       try {
-          const url = `http://localhost:8080/qr-code-system/adminlogin`;
+          const url = `${API_URL}adminlogin`;
           const response = await fetch(url, {
               method: "POST",
               headers: {

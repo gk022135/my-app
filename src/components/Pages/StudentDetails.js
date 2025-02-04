@@ -4,12 +4,13 @@ import './studentDetails.css'
 const StudentDetails = () => {
     const [studentDetails, setStudentDetails] = useState([]); // Initialize as an empty array
     const [loading, setLoading] = useState(false);
+    const API_URL = process.env.REACT_APP_API_URL;
 
     const fetchStudentDetails = async (e) => {
         e.preventDefault();
 
         setLoading(true);
-        const url = "https://qr-bakend.onrender.com";
+        const url = `${API_URL}gatepass`;
         const requestData = {
             email: localStorage.getItem("useremail"),
         };
